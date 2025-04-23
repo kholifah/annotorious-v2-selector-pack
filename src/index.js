@@ -4,6 +4,7 @@ import RubberbandEllipseTool from './ellipse/RubberbandEllipseTool';
 import RubberbandFreehandTool from './freehand/RubberbandFreehandTool';
 import RubberbandMultipolygonTool from './multipolygon/RubberbandMultipolygonTool';
 import RubberbandLineTool from './line/RubberbandLineTool';
+import RubberbandArrowTool from './arrow/RubberbandArrowTool';
 
 const ALL_TOOLS = new Set([
   'point',
@@ -11,6 +12,7 @@ const ALL_TOOLS = new Set([
   'ellipse',
   'freehand',
   'line',
+  'arrow',
   // 'multipolygon' // exclude from defaults for now
 ]);
 
@@ -38,6 +40,9 @@ const SelectorPack = (anno, config) => {
 
     if (tool === 'line')
       anno.addDrawingTool(RubberbandLineTool);
+    
+    if (tool === 'arrow')
+      anno.addDrawingTool(RubberbandArrowTool);
   });
 
 }
