@@ -19,8 +19,10 @@ const ALL_TOOLS = new Set([
 const SelectorPack = (anno, config) => {
 
   // Add configured tools, or all
-  const tools = config?.tools ? 
-    config.tools.map(t => t.toLowerCase()) : ALL_TOOLS;
+  // const tools = config?.tools ? 
+  //   config.tools.map(t => t.toLowerCase()) : ALL_TOOLS;
+  const tools = (config && config.tools) ? 
+  config.tools.map(t => t.toLowerCase()) : ALL_TOOLS;
 
   tools.forEach(tool => {
     if (tool === 'point')
