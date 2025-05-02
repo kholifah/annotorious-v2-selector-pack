@@ -14,6 +14,14 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',   // Injects styles into DOM
+          'css-loader',     // Turns CSS into CommonJS
+          'sass-loader'     // Compiles Sass to CSS
+        ]
       }
     ]
   },
