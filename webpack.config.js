@@ -3,30 +3,39 @@ const path = require('path');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'annotorious-selector-pack.js',
+    path: path.resolve(__dirname, 'dist'),
     library: 'SelectorPack',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd', // Penting: universal compatibility
+    globalObject: 'this'
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                targets: {
+                  browsers: ['defaults']
+                },
+                useBuiltIns: 'entry',
+                corejs: 3
+              }]
+            ],
+            plugins: [
+              '@babel/plugin-proposal-class-properties'
+            ]
+          }
+        }
       },
       {
         test: /\.scss$/,
-        use: [
-          'style-loader',   // Injects styles into DOM
-          'css-loader',     // Turns CSS into CommonJS
-          'sass-loader'     // Compiles Sass to CSS
-        ]
+        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
       }
     ]
-  },
-  resolve: {
-    extensions: ['.js']
-  },
-  mode: 'production'
+  }
 };
