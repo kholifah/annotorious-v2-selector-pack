@@ -6,7 +6,7 @@ module.exports = {
     filename: 'annotorious-selector-pack.js',
     path: path.resolve(__dirname, 'dist'),
     library: 'SelectorPack',
-    libraryTarget: 'umd', // Penting: universal compatibility
+    libraryTarget: 'umd',
     globalObject: 'this'
   },
   module: {
@@ -26,15 +26,13 @@ module.exports = {
                 corejs: 3
               }]
             ],
-            plugins: [
-              '@babel/plugin-proposal-class-properties'
-            ]
+            plugins: ['@babel/plugin-proposal-class-properties']
           }
         }
       },
       {
         test: /\.scss$/,
-        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+        use: ['style-loader', 'css-loader', 'sass-loader']
       }
     ]
   }
